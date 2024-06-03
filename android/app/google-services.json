@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "574350818259",
+    "project_id": "bisonabiso-88f14",
+    "storage_bucket": "bisonabiso-88f14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574350818259:android:04b1bd2331e2af569b8d26",
+        "android_client_info": {
+          "package_name": "com.example.bisonabiso"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvaZfiKL9HVFKm8cm96F40MxhRFTQiR2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

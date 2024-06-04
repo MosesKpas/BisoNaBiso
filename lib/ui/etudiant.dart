@@ -302,7 +302,7 @@ class _EtudiantPageState extends State<EtudiantPage> {
       String date = dateController.text;
       EtudiantController etcont = EtudiantController();
       var eyano = await etcont.enregistrerEtudiant(
-          matricule, nom, prenom, promotion, adresse, contact, mail, date);
+          matricule, nom, prenom, promotion, adresse, contact, mail, date,_imageFile!);
       if (eyano == "Reussie") {
         showMessage("Etudiant enregistré !");
         reset();

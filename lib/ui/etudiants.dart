@@ -1,6 +1,8 @@
+import 'package:bisonabiso/model/etudiant.dart';
 import 'package:bisonabiso/ui/chargement.dart';
 import 'package:bisonabiso/ui/erreurpage.dart';
 import 'package:bisonabiso/ui/etudiant.dart';
+import 'package:bisonabiso/ui/etudiantdetail.dart';
 import 'package:bisonabiso/utils/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +29,24 @@ class EtudiantsPage extends StatelessWidget {
               children: snapshot.data!.docs.map((document) {
                 return Card(
                   child: ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Etudiant et = Etudiant(
+                          matricule: document["matricule"],
+                          nom: document["nom"],
+                          prenom: document["prenom"],
+                          promotion: document["promotion"],
+                          adresse: document["adresse"],
+                          contact: document["contact"],
+                          mail: document["mail"],
+                          date: document["date"]);
+                      Navigator.push(
+                          //creer un objet enseignant
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EtudiantDetailPage(
+                                    etudiant: et,
+                                  )));
+                    },
                     title: Text(document['nom'] + " " + document['prenom']),
                     subtitle: Text(document['matricule']),
                   ),

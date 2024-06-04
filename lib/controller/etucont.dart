@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:bisonabiso/utils/utils.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class EtudiantController {
   Future<String> enregistrerEtudiant(
@@ -9,9 +12,11 @@ class EtudiantController {
       String adresse,
       String contact,
       String mail,
-      String date) async {
+      String date,
+      File file) async {
     String reponse = "";
     try {
+      await uploadFicier(nom, file);
       await firestore.collection("Etudiants").doc(matricule).set({
         "matricule": matricule,
         "nom": nom,
@@ -27,5 +32,11 @@ class EtudiantController {
       reponse = e.toString();
     }
     return reponse;
+  }
+
+  uploadFicier(String nom, File file) async {
+    Reference ref = firebaseStorage.ref().child("Etudiants").child(nom);
+    UploadTask uploadTask = ref.putFile(file);
+    TaskSnapshot snapshot = await uploadTask;
   }
 }

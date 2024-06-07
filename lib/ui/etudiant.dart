@@ -47,7 +47,7 @@ class _EtudiantPageState extends State<EtudiantPage> {
               const SizedBox(
                 height: 20,
               ),
-              
+
               TextField(
                 obscureText: false,
                 keyboardType: TextInputType.text,
@@ -246,8 +246,9 @@ class _EtudiantPageState extends State<EtudiantPage> {
       ],
     );
   }
+
   //
-    void prendrePhoto(ImageSource source) async {
+  void prendrePhoto(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
     if (pickedFile != null) {
       setState(() {
@@ -291,6 +292,8 @@ class _EtudiantPageState extends State<EtudiantPage> {
       showMessage("Remplir le mail");
     } else if (dateController.text.isEmpty) {
       showMessage("Remplir la date");
+    } else if (_imageFile == null) {
+      showMessage("Veuillez selectionner une image");
     } else {
       String matricule = matriculeController.text;
       String nom = nomController.text;
@@ -301,8 +304,8 @@ class _EtudiantPageState extends State<EtudiantPage> {
       String mail = mailController.text;
       String date = dateController.text;
       EtudiantController etcont = EtudiantController();
-      var eyano = await etcont.enregistrerEtudiant(
-          matricule, nom, prenom, promotion, adresse, contact, mail, date,_imageFile!);
+      var eyano = await etcont.enregistrerEtudiant(matricule, nom, prenom,
+          promotion, adresse, contact, mail, date, _imageFile!);
       if (eyano == "Reussie") {
         showMessage("Etudiant enregistré !");
         reset();

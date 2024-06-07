@@ -7,6 +7,7 @@ class Etudiant {
   String? contact;
   String? mail;
   String? date;
+  String? imageUrl;
 
   Etudiant({
     required this.matricule,
@@ -17,5 +18,6 @@ class Etudiant {
     required this.contact,
     required this.mail,
     required this.date,
+    required this.imageUrl,
   });
 }

@@ -31,14 +31,16 @@ class EtudiantsPage extends StatelessWidget {
                   child: ListTile(
                     onTap: () {
                       Etudiant et = Etudiant(
-                          matricule: document["matricule"],
-                          nom: document["nom"],
-                          prenom: document["prenom"],
-                          promotion: document["promotion"],
-                          adresse: document["adresse"],
-                          contact: document["contact"],
-                          mail: document["mail"],
-                          date: document["date"]);
+                        matricule: document["matricule"],
+                        nom: document["nom"],
+                        prenom: document["prenom"],
+                        promotion: document["promotion"],
+                        adresse: document["adresse"],
+                        contact: document["contact"],
+                        mail: document["mail"],
+                        date: document["date"],
+                        imageUrl: document["imageUrl"],
+                      );
                       Navigator.push(
                           //creer un objet enseignant
                           context,

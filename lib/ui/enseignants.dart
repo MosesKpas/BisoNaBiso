@@ -37,6 +37,7 @@ class EnseigantPage extends StatelessWidget {
                         specialite: document["specialite"],
                         contact: document["contact"],
                         mail: document["mail"],
+                        imageUrl: document["imageUrl"],
                       );
                       Navigator.push(
                           //creer un objet enseignant

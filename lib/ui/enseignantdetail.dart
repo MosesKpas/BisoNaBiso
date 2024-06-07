@@ -19,8 +19,13 @@ class EnseignantDetailPage extends StatelessWidget {
             children: [
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.45,
-                child: const Image(
-                    image: AssetImage("assets/images/defaultUser.jpg")),
+                child: enseignant.imageUrl!.isEmpty
+                    ? const Image(
+                        image: AssetImage("assets/images/defaultUser.jpg"),
+                      )
+                    : Image(
+                        image: NetworkImage(enseignant.imageUrl!),
+                      ),
               ),
               const Divider(
                 height: 50,

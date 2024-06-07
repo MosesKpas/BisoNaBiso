@@ -177,8 +177,9 @@ class _EnseignantPageState extends State<EnseignantPage> {
       ],
     );
   }
+
   //
-    void prendrePhoto(ImageSource source) async {
+  void prendrePhoto(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
     if (pickedFile != null) {
       setState(() {
@@ -200,6 +201,8 @@ class _EnseignantPageState extends State<EnseignantPage> {
       showMessage("Remplir le Contact");
     } else if (mailController.text.isEmpty) {
       showMessage("Remplir le Mail");
+    } else if (_imageFile == null) {
+      showMessage("Veuillez choisir une image");
     } else {
       String matricule = matriculeController.text.toUpperCase();
       String nom = nomController.text.toUpperCase();
@@ -209,10 +212,11 @@ class _EnseignantPageState extends State<EnseignantPage> {
       String mails = mailController.text;
       EnseigantController ense = EnseigantController();
       var eyano = await ense.enregisstrerEnseignant(
-          matricule, nom, prenom, specialite, contact,mails,_imageFile!);
+          matricule, nom, prenom, specialite, contact, mails, _imageFile!);
       if (eyano == "Reussie") {
         showMessage("Enseignant enregistrer avec succes");
         reset();
+        _imageFile = null;
       } else {
         showMessage("Enseignant non enregistrer $eyano");
       }
